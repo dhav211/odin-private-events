@@ -1,6 +1,17 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events = case params[:show]
+              when "all"
+                Event.all
+              when "upcoming"
+                Event.upcoming
+              when "past"
+                Event.past
+              when "has_attendees"
+                Event.has_attendees
+              else
+                Event.all
+              end
   end
 
   def show

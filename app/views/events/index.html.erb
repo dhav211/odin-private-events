@@ -4,8 +4,15 @@
   <%= link_to 'Create New Event', new_event_path %>
 <% end %>
 
+</br>
+<%= link_to 'Show all', events_path(show: :all) %>
+<%= link_to 'Show Upcoming', events_path(show: :upcoming) %>
+<%= link_to 'Show Past', events_path(show: :past) %>
+<%= link_to 'Show With Attendees', events_path(show: :has_attendees) %>
+
 <% @events.each do |event| %>
   <h2><%= link_to event.name, event %></h2>
   <h3>Hosted by <%= link_to event.creator.username, event.creator %></h3>
+  <h3>Date: <%= event.date.strftime('%m - %d - %Y') %></h3>
   
 <% end %>
