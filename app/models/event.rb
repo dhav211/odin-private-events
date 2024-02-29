@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
   belongs_to :creator, class_name: 'User'
-  # has_many :attendees
+  has_many :attendees
+  has_many :attending_users, through: :attendees, source: :user
 end

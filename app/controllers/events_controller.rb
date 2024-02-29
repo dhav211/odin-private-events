@@ -5,6 +5,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by id: params[:id]
+    @attendees = @event.attending_users.all
   end
 
   def new
