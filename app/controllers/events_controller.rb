@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find_by id: params[:id]
   end
 
   def new
@@ -15,7 +16,7 @@ class EventsController < ApplicationController
     @new_event.creator = current_user
 
     if @new_event.save
-      redirect_to root_path, notice: 'Event created sucessfully!'
+      redirect_to @new_event, notice: 'Event created sucessfully!'
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,6 +25,6 @@ class EventsController < ApplicationController
   private
 
   def allowed_params
-    params.require(:event).permit(:name, :location, :date, :creator)
+    params.require(:event).permit(:name, :location, :date, :description, :creator)
   end
 end
