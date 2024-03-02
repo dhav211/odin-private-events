@@ -1,21 +1,3 @@
 <h1>Create New Event</h1>
 
-<%= form_with model: @new_event do |form| %>
-  <%= form.label :name%>
-  <%= form.text_field :name %>
-
-  <%= form.label :location %>
-  <%= form.text_field :location %>
-
-  <%= form.label :date %>
-  <%= form.date_field :date %>
-
-  </br>
-
-  <%= form.label :description %>
-  </br>
-  <%= form.text_area :description %>
-  </br>
-
-  <%= form.submit %>
-<% end %>
+<%= render "form", event: @new_event %>

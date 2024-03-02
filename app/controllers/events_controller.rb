@@ -34,6 +34,19 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find_by id: params[:id]
+  end
+
+  def update
+    @event = Event.find_by id: params[:id]
+    if @event.update allowed_params
+      redirect_to @event, notice: 'Event edited.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @event = Event.find_by id: params[:id]
     @event.destroy

@@ -4,6 +4,6 @@ module EventsHelper
   end
 
   def current_user_attending_event?(event)
-    event.attending_users.where(id: current_user.id).exists?
+    user_signed_in? && event.attending_users.where(id: current_user.id).exists?
   end
 end
