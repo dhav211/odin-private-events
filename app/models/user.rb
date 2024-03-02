@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
 
   has_many :created_events, foreign_key: 'creator_id', class_name: 'Event'
-  has_many :attendees
+  has_many :attendees, dependent: :destroy
   has_many :attending_events, through: :attendees, source: :event
   # has_many :attended_events, foreign_key: 'event_id', class_name: 'Event'
 
